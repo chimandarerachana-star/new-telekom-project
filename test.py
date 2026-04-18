@@ -36,3 +36,16 @@ print(rdd1.union(rdd2).collect())
 data =[("a",1),("b",2),("a",3),("a",10)]
 rdd_kv = sc.parallelize(data)
 
+rdd_reduced = rdd_kv.reduceByKey(lambda a, b: a + b)
+print(rdd_reduced.collect())
+
+rdd=sc.parallelize([1,2,3,4,5,6])
+print(rdd.collect())
+print(rdd.max())
+print(rdd.min())
+print(rdd.count())
+print(rdd.first())
+print(rdd.take(2))
+
+rdd_group =rdd_kv.groupByKey().mapValues(list)
+print(rdd_group.collect())
